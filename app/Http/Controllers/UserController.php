@@ -35,13 +35,15 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+
+            return ['error' => ['status' => 400, 'message' => $validator->errors()]];
         }
 
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'photo_url'=>$request->get('photo_url'),
         ]);
 
         $token = JWTAuth::fromUser($user);

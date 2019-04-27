@@ -6,7 +6,9 @@ use App\Comment;
 use App\Like;
 use App\Video;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 
@@ -82,7 +84,7 @@ class VideoController extends Controller
 
         }
         foreach ($collection->comments as $comment) {
-            $collection_comment[]=['comment'=>$comment->comment,'users'=>$comment->users];
+            $collection_comment[]=['comment'=>$comment->comment,'created_at'=>$comment->created_at,'users'=>$comment->users];
 
         }
 
@@ -193,7 +195,8 @@ class VideoController extends Controller
 
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+
+            return ['error' => ['status' => 400, 'message' => $validator->errors()]];
         }
         try {
 
