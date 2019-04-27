@@ -1,2 +1,2 @@
 # Video Library
-Simple video library api
+Api for video library with laravel 5.8
