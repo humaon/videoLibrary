@@ -1,2 +1,2 @@
 # videoLibrary
-Simple vido library api
+Simple video library api
