@@ -18,8 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('url');
             $table->string('description')->nullable();
-            $table->timestamp('thumbnail_url')->nullable();
-            $table->string('password');
+            $table->string('thumbnail_url')->nullable();
             $table->timestamps();
         });
     }

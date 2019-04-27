@@ -45,4 +45,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+//    public function user()
+//    {
+//        $this->hasMany(Like::class)->select('id','name','photo_url');
+//    }
 }
