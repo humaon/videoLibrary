@@ -16,7 +16,8 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
 
         try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
+
                 return response()->json(['error' => 'invalid_credentials'], 400);
             }
         } catch (JWTException $e) {
@@ -34,7 +35,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
 
             return ['error' => ['status' => 400, 'message' => $validator->errors()]];
         }
@@ -43,12 +44,12 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
-            'photo_url'=>$request->get('photo_url'),
+            'photo_url' => $request->get('photo_url'),
         ]);
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(compact('user','token'),201);
+        return response()->json(compact('user', 'token'), 201);
     }
 
     public function getAuthenticatedUser()
@@ -57,7 +58,7 @@ class UserController extends Controller
 
         try {
 
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
 

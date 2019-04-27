@@ -15,19 +15,15 @@ use Illuminate\Http\Request;
 
 Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@authenticate');
-Route::get('videos','VideoController@index');
+Route::get('videos', 'VideoController@index');
 
-//Route::resource('videos','VideoController@store');
-
-
-Route::group(['middleware' => ['jwt.verify']], function() {
+Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
-    Route::post('videos','VideoController@store');
-    Route::get('videos/{id}','VideoController@show');
-    Route::delete('videos/{id}','VideoController@destroy');
-    Route::post('videos/{id}','VideoController@update');
-    Route::get('like_video/{id}','VideoController@like_video');
-    Route::post('comment_on_video/{id}','VideoController@comment_on_video');
+    Route::post('videos', 'VideoController@store');
+    Route::get('videos/{id}', 'VideoController@show');
+    Route::delete('videos/{id}', 'VideoController@destroy');
+    Route::post('videos/{id}', 'VideoController@update');
+    Route::get('like_video/{id}', 'VideoController@like_video');
+    Route::post('comment_on_video/{id}', 'VideoController@comment_on_video');
 
 });
-Route::get('videos', 'VideoController@index');

@@ -42,7 +42,7 @@ class VideoController extends Controller
             return ['error' => ['status' => 400, 'message' => $validator->errors()]];
         }
 
-        if(Video::create($request->all())){
+        if (Video::create($request->all())) {
             return ['success' => ['status' => 200, 'message' => 'Video has been added successfully']];
         }
 
@@ -59,20 +59,17 @@ class VideoController extends Controller
     {
 
 
-       $collection = Video::with('likes.users')->with('comments.users')->find($id);
-       $user = JWTAuth::parseToken()->authenticate();
-        $logged_in_user_like_status=Like::where('video_id',$id)->where('user_id',$user->id)->exists();
+        $collection = Video::with('likes.users')->with('comments.users')->find($id);
+        $user = JWTAuth::parseToken()->authenticate();
+        $logged_in_user_like_status = Like::where('video_id', $id)->where('user_id', $user->id)->exists();
 
-       if(empty($collection ))
-       {
-           return ['success' => ['status' => 200, 'message' => "Sorry the video was not found"]];
-       }
-
-
+        if (empty($collection)) {
+            return ['success' => ['status' => 200, 'message' => "Sorry the video was not found"]];
+        }
 
 
         $newCollection = [];
-        $collection_comment=[];
+        $collection_comment = [];
 
 
         foreach ($collection->likes as $user) {
@@ -80,11 +77,9 @@ class VideoController extends Controller
             array_push($newCollection, $user->users);
 
 
-
-
         }
         foreach ($collection->comments as $comment) {
-            $collection_comment[]=['comment'=>$comment->comment,'created_at'=>$comment->created_at,'users'=>$comment->users];
+            $collection_comment[] = ['comment' => $comment->comment, 'created_at' => $comment->created_at, 'users' => $comment->users];
 
         }
 
@@ -92,7 +87,7 @@ class VideoController extends Controller
         unset($collection->comments);
 
         $collection->likes = ['like' => $logged_in_user_like_status, 'user' => $newCollection];
-        $collection->Comments =  $collection_comment;
+        $collection->Comments = $collection_comment;
         return $collection;
 
 
@@ -119,7 +114,7 @@ class VideoController extends Controller
             return ['error' => ['status' => 400, 'message' => $validator->errors()]];
         }
 
-        if(Video::find($id)->update($request->all())){
+        if (Video::find($id)->update($request->all())) {
             return ['success' => ['status' => 200, 'message' => 'Video has been updated successfully']];
         }
     }
@@ -137,8 +132,8 @@ class VideoController extends Controller
 
         try {
             Video::destroy($id);
-            Like::where('video_id',$id)->delete();
-            Comment::where('video_id',$id)->delete();
+            Like::where('video_id', $id)->delete();
+            Comment::where('video_id', $id)->delete();
 
             DB::commit();
             return ['success' => ['status' => 200, 'message' => "Video Deleted Successfully"]];
@@ -173,20 +168,20 @@ class VideoController extends Controller
 
         }
         if (!Like::where('user_id', $user->id)->where('video_id', $video_id)->exists()) {
-            if(Like::create(['user_id' => $user->id, 'video_id' => $video_id]))
-            {
+            if (Like::create(['user_id' => $user->id, 'video_id' => $video_id])) {
                 return ['success' => ['status' => 200, 'message' => "You liked the video"]];
             }
 
 
         } else {
-            if(Like::where('video_id',$video_id)->delete()){
+            if (Like::where('video_id', $video_id)->delete()) {
                 return ['success' => ['status' => 200, 'message' => "You unliked the video"]];
             }
 
         }
     }
-    public function comment_on_video(Request $request,$video_id)
+
+    public function comment_on_video(Request $request, $video_id)
     {
 
         $validator = Validator::make($request->all(), [
@@ -219,12 +214,9 @@ class VideoController extends Controller
         }
 
 
-            if(Comment::create(['user_id' => $user->id, 'video_id' => $video_id,'comment'=>$request->comment]))
-            {
-                return ['success' => ['status' => 200, 'message' => "You comment has been posted"]];
-            }
-
-
+        if (Comment::create(['user_id' => $user->id, 'video_id' => $video_id, 'comment' => $request->comment])) {
+            return ['success' => ['status' => 200, 'message' => "You comment has been posted"]];
+        }
 
 
     }
