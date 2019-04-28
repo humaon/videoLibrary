@@ -58,7 +58,7 @@ IsImp0aSI6Im9scDVmWkZMSmdFSGp1Z2MiLCJzdWIiOjEsInBydiI6Ijg
 mZQHJVIzgeBCf4kykQ34bfR2rSEcmtSiQGk8modcrd4
 
 You can also login by providing the email and password by hitting the 
-{base_url}/api/register url via a POST method and after login you 
+{base_url}/api/login url via a POST method and after login you 
 will get the token also
 
 
@@ -85,15 +85,15 @@ You can also comment on the video by hitting this POST route
 {base_url}/api/comment_on_video/{video_id}
 comment field should be fillable
 
-You can see a single video associate with the users who 
-likes it and comments with user and also the 
-curent user liked it or not by visiting this GET route
+You can see a single video associated with the users who 
+liked it and associated comments with user data and also the 
+boolean value of curent user liked it or not by visiting this GET route
 
 {base_url}/api/videos/{video_id}
 
 You can also delete and update a video
 
-for delete you have TO hit {base_url}/api/videos/{video_id} 
+for delete you have To hit {base_url}/api/videos/{video_id} 
 This route in DELETE method and for update you have to hit
 {base_url}/api/videos/{video_id} this url in a POST mehtod
 
