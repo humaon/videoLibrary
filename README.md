@@ -47,7 +47,7 @@ password_confirmation
 photo_url(optional)
 
 After successfully register you will get a token which is authorization token
-the toke will be need for further request.You have to set the authorization token 
+the token will be need for further request.You have to set the authorization token 
 in the header section like this-
 
 Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJod
