@@ -32,7 +32,7 @@ DB_PASSWORD=secret
 $ php artisan migrage
 ```
 
-#USE THE VIDEO LIBRARY
+# USE THE VIDEO LIBRARY
 ```
 Now you are ready to use the library.First of all you have to register as a user to add video to the library.
 You can register via hit the following that post route-
@@ -49,12 +49,14 @@ After successfully register you will get a token which is authorization token
 the toke will be need for further request.You have to set the authorization token 
 in the header section like this-
 
-Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1NjM5Mzc2MiwiZXhwIjoxNTU2Mzk3MzYyLCJuYmYiOjE1NTYzOTM3NjIsImp0aSI6Im9scDVmWkZMSmdFSGp1Z2MiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.mZQHJVIzgeBCf4kykQ34bfR2rSEcmtSiQGk8modcrd4
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6M
+U1NjM5Mzc2MiwiZXhwIjoxNTU2Mzk3MzYyLCJuYmYiOjE1NTYzOTM3NjIsImp0aSI6Im9scDVmWkZMSmdFSGp1Z2MiLCJzdWIiOjEsInBydiI6Ijg
+3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.mZQHJVIzgeBCf4kykQ34bfR2rSEcmtSiQGk8modcrd4
 
 Then You can add video by hitting that POST route-
 
 {base_url}/api/videos
-remember the route should be in POST mehtod to add videos and it requires following data
+remember the route should be in POST mehtod to add video and it requires following data
 1)url
 2)title
 3)description (optional)
@@ -62,25 +64,26 @@ remember the route should be in POST mehtod to add videos and it requires follow
 
 After adding videos you can see all the videos via GET method of this url
 {base_url}/api/videos 
-it is should be get method you can see with like count of the video.
+it is should be GET method you can see all the videos associated with like_count.
 
 Now in the next you can like a video by hitting this Get route 
 {base_url}/api/like_video/{video_id}
-if you already liked the video it will unlike it it
+if you already liked the video it will unlike it.
 
 You can also comment on the video by hitting this POST route
 
 {base_url}/api/comment_on_video/{video_id}
 comment field should be fillable
 
-You can see a single video associate with the users who likes it and comments with user and also the curent user liked it or not
-by visiting this get route
+You can see a single video associate with the users who likes it and comments with user and also the 
+curent user liked it or not by visiting this GET route
 
 {base_url}/api/videos/{video_id}
 
 You can also delete and update a video
 
-for delete you have hit {base_url}/api/videos/{video_id} this route in DELETE method and for update 
+for delete you have TO hit {base_url}/api/videos/{video_id} 
+This route in DELETE method and for update you have to hit
 {base_url}/api/videos/{video_id} this url in a POST mehtod
 
 ```
