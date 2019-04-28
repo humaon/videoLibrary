@@ -57,6 +57,11 @@ IsImp0aSI6Im9scDVmWkZMSmdFSGp1Z2MiLCJzdWIiOjEsInBydiI6Ijg
 3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.
 mZQHJVIzgeBCf4kykQ34bfR2rSEcmtSiQGk8modcrd4
 
+You can also login by providing the email and password by hitting the 
+{base_url}/api/register url via a POST method and after login you 
+will get the token also
+
+
 Then You can add video by hitting that POST route-
 
 {base_url}/api/videos
