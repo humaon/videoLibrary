@@ -34,9 +34,9 @@ $ php artisan migrage
 
 # USE THE VIDEO LIBRARY
 ```
-Now you are ready to use the library.
-First of all you have to register as a user to add video to the library.
-You can register via hit the following that post route-
+Now you are ready to use the library.First of all you have to 
+register as a user to add video to the library.You can register 
+via hit that post route-
 {base_url}/api/register
 You have to provide these fields as a from data for registration-
 
