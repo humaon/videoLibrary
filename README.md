@@ -29,7 +29,7 @@ DB_PASSWORD=secret
 
 
 ```
-$ php artisan migrage
+$ php artisan migrate
 ```
 
 # USE THE VIDEO LIBRARY
